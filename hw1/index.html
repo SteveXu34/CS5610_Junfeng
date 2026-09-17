@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!--  Defines the document as HTML5 and sets the page language to English. We can defin-->
+
+<head>
+    <!--The head section is for page general setting and metadata.-->
+    <meta charset="UTF-8">
+    <!--Defines the character encoding as UTF-8 so the browser can display text and special characters correctly.
+    Otherwise, the character that we see in the page will mess up.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Here is for the mobile display. name = "viewport" is telling the browser I am defining the area which the user can see.-->
+    <!--content="width=device-width, initial-scale=1.0" means the width of the webpage is calculated based on the current device's screen width.
+    Then the initial page zoom level is 100%, which doesn't allow browser to zoom in or out automatically at first.-->
+
+    <title>Junfeng Xu — Gooner</title>
+    <!--  Defines the title shown in the browser tab.-->
+    <style>
+        /* ---- CSS content. Defines reusable color variables for the Arsenal theme.---- */
+
+        :root {
+            /* ---- The root here is a pseudo-class. It means it is a root element here.---- */
+            --arsenal-red: #EF0107;
+            --arsenal-navy: #063672;
+            --arsenal-gold: #db9d00;
+            /* ---- Define three base colors here with HEX color number.---- */
+            --ink: #f5f5f5;
+            /* ---- Define the color of the main text.---- */
+            --card-bg: rgba(22, 28, 44, 0.72);
+            /* ---- Defines the semi-transparent background color used for the cards with rgba() CSS color funciton---- */
+        }
+
+        * { box-sizing: border-box; }
+
+        /* ---- The asterisk *{} here means all the html element, and the boxing-sizing: border-box means we need to define
+        width / height size in boxing-size way Including: border, padding(distance between border and content) and content.---- */
+
+        body {
+            /* ---- The body section will set the default font for the whole page---- */
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            /* ---- Set the text character on the page by the order from system-ui to sans-serif.----*/
+            margin: 0;
+            /* Removes the browser's default margin around the page. */
+            min-height: 100vh;
+            /* Makes the page at least as tall as the full browser viewport. */
+            color: var(--ink);
+            /* Uses the custom --ink variable as the default text color. */
+            line-height: 1.6;
+            /* Adds comfortable spacing between lines of text. */
+      
+            background:
+                linear-gradient(rgba(4, 8, 16, 0.42), rgba(4, 8, 16, 0.58)),
+                url("ok-this-looks-nice-coyg-v0-voqbnfcx8dzg1.webp") center / cover fixed no-repeat;
+                /* Adds a background image with a dark transparent overlay to keep the text readable.*/
+                /* linear-gradient() is a CSS function that with linear gradient effect.  The number 0.58 here represents the level of untransparency.
+                Then the url() import a background image which is placed in the center of webpage and adjusted the size to cover all the page.*/
+        }
+
+        .wrap {
+            /* Centers the main content, limits its maximum width, and adds inner spacing. 
+            Its max widty is 46 rem. The outside distance between the other element is 0.
+            The padding: 3rem 1.25rem 4rem means the distance between the context to the top is 3rem, to the left and right side is 1.25rem,
+            to the bottom is 4 rem.*/
+            max-width: 46rem;
+            margin: 0 auto;
+            padding: 3rem 1.25rem 4rem;
+        }
+
+
+        header {
+        /* Centers the text inside the header and adds spacing below the header section. */
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
+            /* Styles the h1 title inside the header.
+            font-size: clamp(2rem, 6vw, 3.25rem) makes the title responsive.
+            The font size will not be smaller than 2rem and not larger than 3.25rem.
+            6vw means the preferred font size is based on 6% of the viewport width.
+            margin: 0 removes the default outside spacing around the h1.
+            letter-spacing: 0.5px adds a small space between each letter.
+            text-shadow adds a dark shadow behind the title to make it easier to read on the background image. */
+            font-size: clamp(2rem, 6vw, 3.25rem);
+            margin: 0;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .tagline {
+                /* Styles the tagline under the main title.< Over the land and sea>
+                color uses the --arsenal-red variable defined in :root.
+                font-weight: 700 makes the text bold.
+                text-transform: uppercase changes all letters to uppercase.
+                letter-spacing: 3px adds 3px of space between each letter.
+                margin-top: 0.5rem adds outside space between the tagline and the element above it. */
+            color: var(--arsenal-red);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            /* Styles each content card (the boxes that hold the sections).
+            background uses the --card-bg variable for a semi-transparent dark panel.
+            border adds a thin red outline with 0.35 opacity.
+            border-radius: 14px rounds the four corners.
+            padding: 1.5rem 1.75rem adds inner spacing (top/bottom 1.5rem, left/right 1.75rem).
+            margin-bottom: 1.5rem adds outside spacing below each card.
+            backdrop-filter: blur(4px) blurs whatever is behind the card so text stays readable. */
+            background: var(--card-bg);
+            border: 1px solid rgba(239, 1, 7, 0.35);
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .card h2 {
+            /* Styles the h2 heading inside a card.
+            margin-top: 0 removes the default space above the heading.
+            color uses the --arsenal-red variable.
+            border-bottom draws a red underline (0.4 opacity) below the heading.
+            padding-bottom: 0.4rem adds a little space between the text and that underline. */
+            margin-top: 0;
+            color: var(--arsenal-red);
+            border-bottom: 2px solid rgba(239, 1, 7, 0.4);
+            padding-bottom: 0.4rem;
+        }
+
+        /* ---- Random player button ---- */
+        button {
+            /* Styles the "Pick a random player" button.
+            font: inherit makes the button use the same font as the rest of the page.
+            font-weight: 700 makes the label bold.
+            color: #fff sets the text to white.
+            background uses the --arsenal-red variable.
+            border: none removes the browser's default button border.
+            border-radius: 999px makes the button fully rounded (pill shape).
+            padding: 0.7rem 1.6rem adds inner spacing around the label.
+            cursor: pointer shows the hand cursor on hover.
+            transition animates transform and filter over 0.15s for smooth hover/click effects. */
+            font: inherit;
+            font-weight: 700;
+            color: #fff;
+            background: var(--arsenal-red);
+            border: none;
+            border-radius: 999px;
+            padding: 0.7rem 1.6rem;
+            cursor: pointer;
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+
+        /* button:hover, :active and :focus-visible are pseudo-classes for different states.
+        :hover brightens the button when the mouse is over it.
+        :active shrinks it slightly while it is being clicked.
+        :focus-visible draws a navy outline when it is focused by the keyboard (accessibility). */
+        button:hover { filter: brightness(1.1); }
+        button:active { transform: scale(0.94); }
+        button:focus-visible { outline: 3px solid var(--arsenal-navy); }
+
+        /* ---- Random player card: Flexbox layout ---- */
+        .player-card {
+            /* Styles the card that shows the randomly picked player.
+            display: flex lays the number and the name/position side by side (Flexbox).
+            align-items: center vertically centers those items.
+            gap: 1.1rem adds space between the number and the text block.
+            margin-top: 1.25rem adds space above the card.
+            padding: 1.1rem 1.25rem adds inner spacing.
+            background is a faint white overlay so the card stands out.
+            border-left draws a thick red accent bar on the left edge.
+            border-radius: 10px rounds the corners.
+            opacity: 0 and transform: translateY(8px) start the card hidden and shifted down.
+            transition animates opacity and position over 0.35s for the fade-in effect. */
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            margin-top: 1.25rem;
+            padding: 1.1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            border-left: 4px solid var(--arsenal-red);
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        /* JS adds .show to fade the picked player in */
+        .player-card.show {
+            /* When JavaScript adds the .show class, the card becomes fully visible.
+            opacity: 1 fades it in and transform: translateY(0) slides it back to its natural spot. */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .player-number {
+            /* Styles the big shirt number on the left of the card.
+            font-size: 2.4rem makes it large.
+            font-weight: 800 makes it very bold.
+            color uses the --arsenal-red variable.
+            min-width: 3rem keeps a fixed width so names stay aligned.
+            text-align: center centers the number within that width. */
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--arsenal-red);
+            min-width: 3rem;
+            text-align: center;
+        }
+
+        .player-name {
+            /* Styles the player's name.
+            display: block puts it on its own line.
+            font-size: 1.25rem makes it slightly larger than normal text.
+            font-weight: 700 makes it bold. */
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .player-pos {
+            /* Styles the player's position label (e.g. "Right Winger").
+            display: block puts it on its own line under the name.
+            font-size: 0.78rem makes it small.
+            text-transform: uppercase shows it in capitals.
+            letter-spacing: 1px spreads the letters out.
+            opacity: 0.75 dims it slightly so the name stands out more. */
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.75;
+        }
+
+        footer {
+            /* Styles the footer line at the bottom of the page.
+            text-align: center centers the text.
+            font-size: 0.85rem makes it small.
+            opacity: 0.7 dims it a little.
+            margin-top: 2rem adds space above it. */
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+        }
+
+        /* ---- Scrolling anthem ticker, fixed bottom-right ---- */
+        .anthem {
+            /* Styles the small box in the bottom-right corner that scrolls the club anthem.
+            position: fixed pins it to the viewport so it stays put while the page scrolls.
+            right: 1rem and bottom: 1rem place it 1rem from the bottom-right corner.
+            width: 15rem and height: 8.5rem set its size.
+            overflow: hidden clips the lyrics that scroll outside the box.
+            border-radius: 12px rounds the corners.
+            background is a semi-transparent Arsenal navy.
+            border adds a faint white outline.
+            box-shadow adds a soft drop shadow so the box lifts off the page.
+            mask-image fades the top and bottom edges so lyrics appear/disappear smoothly
+            (the -webkit- line is the same rule for Safari/Chrome). */
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            width: 15rem;
+            height: 8.5rem;
+            overflow: hidden;
+            border-radius: 12px;
+            background: rgba(6, 54, 114, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            -webkit-mask-image: linear-gradient(transparent, #000 10%, #000 90%, transparent);
+                    mask-image: linear-gradient(transparent, #000 10%, #000 90%, transparent);
+        }
+
+        .anthem-title {
+            /* Styles the fixed title bar ("North London Forever") at the top of the box.
+            position: absolute and top: 0 pin it to the top of the .anthem box.
+            width: 100% makes it span the full width.
+            padding: 0.35rem 0 adds vertical spacing.
+            text-align: center centers the title.
+            font-size: 0.7rem makes it small.
+            letter-spacing: 1px spreads the letters out.
+            text-transform: uppercase shows it in capitals.
+            background uses the --arsenal-red variable.
+            z-index: 2 keeps the title above the scrolling lyrics. */
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 0.35rem 0;
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: var(--arsenal-red);
+            z-index: 2;
+        }
+
+        .anthem-track {
+            /* Styles the block of lyrics that scrolls upward inside the box.
+            position: absolute and top: 100% start the lyrics just below the box.
+            width: 100% makes them span the full width.
+            text-align: center centers each line.
+            font-weight: 600 makes them semi-bold.
+            font-size: 0.9rem sets the size and line-height: 1.9 spaces the lines out.
+            animation runs the scrollUp keyframes over 16s, linearly, looping forever. */
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            /* ---- CSS keyframe animation: scroll lyrics upward ---- */
+            animation: scrollUp 16s linear infinite;
+        }
+
+        /* Removes the default outside spacing on each lyric line so they sit close together. */
+        .anthem-track p { margin: 0; }
+
+        /* Defines the scrollUp animation used above.
+        It moves the lyrics from just below the box (top: 100%) to just above it (top: -100%),
+        which makes the text scroll upward and off the top. */
+        @keyframes scrollUp {
+            from { top: 100%; }
+            to   { top: -100%; }
+        }
+
+        /* ---- Media query: tidy up on phones ---- */
+        /* A media query applies these rules only when the screen is 480px wide or narrower.
+        On small phones it reduces the top padding and shrinks the anthem box so it fits. */
+        @media (max-width: 480px) {
+            .wrap { padding-top: 2rem; }
+            .anthem { width: 11rem; height: 7rem; }
+        }
+    </style>
+</head>
+<body>
+<!-- The body holds everything the user actually sees on the page. -->
+<!-- .wrap is the centered container that keeps all the cards in a readable column. -->
+<div class="wrap">
+    <!-- The header holds the page title and the tagline under it. -->
+    <header>
+        <h1>Junfeng Xu</h1>
+        <p class="tagline">Over Land and Sea 🔴⚪</p>
+    </header>
+
+    <!-- First card: a short self-introduction. -->
+    <section class="card">
+        <h2>About Me</h2>
+        <p>
+            Hi class! I'm Junfeng, a MSCS student at Northeastern University and
+            a diehard <strong>Arsenal FC</strong> supporter. When I'm not writing code,
+            you'll find me watching the Gunners at the Emirates (in spirit).
+        </p>
+    </section>
+
+    <!-- Second card: the interactive random-player feature. -->
+    <section class="card">
+        <h2>Random Gunner</h2>
+        <p>Hit the button to reveal a random Arsenal player 👇</p>
+        <!-- Clicking this button runs the JavaScript that picks a random player. -->
+        <button id="randomBtn">🎲 Pick a random player</button>
+        <!-- The picked player's details are filled in by JavaScript.
+        These spans start empty; their text is set by JS when the button is clicked. -->
+        <div class="player-card" id="playerCard">
+            <span class="player-number" id="playerNumber"></span>
+            <span>
+                <span class="player-name" id="playerName"></span>
+                <span class="player-pos" id="playerPos"></span>
+            </span>
+        </div>
+    </section>
+
+    <!-- The footer credit line at the bottom of the page. -->
+    <footer>
+        Created by Junfeng & Claude -- COYG!!
+    </footer>
+</div>
+
+<!-- Scrolling club anthem in the bottom-right corner.
+aria-hidden="true" tells screen readers to skip this decorative element. -->
+<aside class="anthem" aria-hidden="true">
+    <!-- The fixed title bar of the anthem box. -->
+    <div class="anthem-title">🎵 North London Forever</div>
+    <!-- These lyric lines are what scroll upward, one <p> per line. -->
+    <div class="anthem-track">
+        <p>North London forever,</p>
+        <p>Whatever the weather,</p>
+        <p>These streets are our own.</p>
+        <p>And my heart will leave you never,</p>
+        <p>My blood will forever</p>
+        <p>Run through the stone.</p>
+        <p>🔴⚪ COYG! 🔴⚪</p>
+    </div>
+</aside>
+
+<script>
+    // ---- Squad data as an array of objects ----
+    // Each object holds one player's shirt number, name and position.
+    // Storing the data as an array lets the code pick any player without repeating markup.
+    const players = [
+        { number: 7,  name: "Bukayo Saka",       position: "Right Winger" },
+        { number: 8,  name: "Martin Ødegaard",   position: "Attacking Mid (C)" },
+        { number: 41, name: "Declan Rice",       position: "Central Midfielder" },
+        { number: 2,  name: "William Saliba",    position: "Centre Back" },
+        { number: 29, name: "Kai Havertz",       position: "Striker" },
+        { number: 1,  name: "David Raya",        position: "Goalkeeper" },
+        { number: 11, name: "Gabriel Martinelli", position: "Left Winger" },
+        { number: 6,  name: "Gabriel Magalhães",  position: "Centre Back" },
+    ];
+
+    // ---- Event listener: click the button to reveal a random player ----
+    // document.querySelector finds an element by its CSS selector (here, by id).
+    // We grab the card and the three spans once, so we can update their text later.
+    const card = document.querySelector("#playerCard");
+    const numberEl = document.querySelector("#playerNumber");
+    const nameEl = document.querySelector("#playerName");
+    const posEl = document.querySelector("#playerPos");
+
+    // addEventListener runs the function inside every time the button is clicked.
+    document.querySelector("#randomBtn").addEventListener("click", () => {
+        // Math.random() gives a number from 0 up to (but not including) 1.
+        // Multiplying by players.length and flooring it gives a random valid array index.
+        const player = players[Math.floor(Math.random() * players.length)];
+        // ---- Query and modify the DOM with the picked player ----
+        // textContent replaces the text shown inside each span with the picked player's data.
+        numberEl.textContent = player.number;
+        nameEl.textContent = player.name;
+        posEl.textContent = player.position;
+        // restart the fade-in animation each click:
+        // remove .show, force the browser to re-read the layout (void card.offsetWidth),
+        // then add .show again so the CSS transition plays from the start every time.
+        card.classList.remove("show");
+        void card.offsetWidth;
+        card.classList.add("show");
+    });
+</script>
+</body>
+</html>
