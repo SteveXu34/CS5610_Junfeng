@@ -4,6 +4,9 @@
 # Time: Sep-24-2026
 
 # Acme Corp Website Reproduction
+
+**Live demo which is deployed on Vercel:** https://cs-5610-junfeng-hw2.vercel.app
+
 ## Project Overview
 This project is a reproduction of the Acme Corp demo website using only plain HTML, CSS, and JavaScript.
 No frontend framework or Tailwind CSS is used in this project.
