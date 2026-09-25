@@ -1,0 +1,421 @@
+@font-face {
+  font-family: "Geist";
+  src: url("../Material/font/Geist[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+body {
+    /* Define the css sytle of body.*/
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  color: #111827;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+    /* Define the css sytle of header in html.*/
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 24px;
+}
+
+nav {
+    /* Define the css sytle of nav in html.*/
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav img {
+    /* Define the css sytle of img in html.*/
+  width: 200px;
+  height: auto;
+}
+
+nav ul {
+    /* Define the css sytle of ul in html.*/
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+nav a {
+    /* Define the style of the hyperlink in html. text-decoration: none means that remove default underline under the text.
+    And color: #4b5563 means that the color of the text is grey.*/
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 400;
+}
+
+nav a:hover {
+    /* hover means that the text turns black when hovering over the links in the nav.*/
+  color: black;
+}
+
+main {
+    /* Define the css sytle of main in html including the max-width, box-sizing and so on.*/
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+    /* box-sizing: border-box means the declared width includes the content,
+    padding, and border, which helps prevent the element from becoming wider
+    than expected. */
+  
+}
+
+main h1 {
+    /* Define the css sytle of h1 in main section.*/
+  font-size: 36px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+main p {
+    /* Define the css sytle of p in main section.*/
+  font-size: 16px;
+  font-weight: 400;
+  color: #6f7276;
+  line-height: 1.5;
+}
+
+
+/*  Define the css style of a in main section. For the clickable link.  */
+main a {
+  color: #4b5563;
+  text-decoration: underline;
+}
+
+main a:visited {
+  color: #4b5563;
+}
+
+main a:hover {
+  color: black;
+}
+
+
+footer {
+    /* Define the css sytle of footer in html.*/
+  border-top: 1px solid #e5e7eb;
+  padding: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.disclaimer {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-top: 28px;
+}
+
+
+/* Define the css style for case_studies element. */
+
+#case-study-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.case-study-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.case-study-item p {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.case-study-item:first-child {
+  padding-top: 40px;
+}
+
+.case-study-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.case-study-title-row h1,
+.case-study-title-row h2 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.case-study-title-row a,
+.case-study-title-row a:visited {
+  color: #111827;
+  text-decoration: none;
+}
+
+.case-study-title-row a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+
+/*  For Case_study_one html*/
+.case-study-detail {
+  max-width: 672px;
+}
+
+.case-study-summary {
+  font-size: 16px;
+  color: #4b5563;
+  margin-bottom: 40px;
+}
+.case-study-item:last-child {
+  border-bottom: none;
+}
+
+
+/* for Case_study_two html */
+.access-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.access-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.access-box input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.access-box button {
+  padding: 10px 16px;
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* For blog section */
+.blog-page h1 {
+  margin-bottom: 32px;
+}
+
+.blog-page p {
+  color: #6b7280;
+}
+
+.blog-page a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+
+
+/* CSS for the about.html team member information */
+#team-list {
+  list-style: none;
+  padding: 0;
+}
+
+.team-member {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid #e5e7eb;
+  align-items: flex-start;
+}
+
+
+.team-member-info {
+  max-width: 560px;
+}
+
+.team-member-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.team-member-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.team-member-role {
+  margin: 4px 0 8px 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.team-member-info p {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.team-member:last-child {
+  border-bottom: none;
+}
+
+.about-team-title {
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+/* For Contact page */
+
+.contact-page {
+  max-width: 672px;
+}
+
+.contact-intro {
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid #9ca3af;
+  border-radius: 4px;
+  background-color: #f9fafb;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6b7280;
+  background-color: white;
+}
+
+
+/* Make the input field span the full width of the form. */
+
+#contact-form button {
+  padding: 14px 34px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff7a59;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#contact-form button:hover {
+  background-color: #ff8f73;
+}
+
+#contact-form {
+  width: calc(100% - 80px);
+  margin: 0 auto;
+}
+
+.contact-form-intro {
+  margin: 72px 0 48px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #374151;
+}
+
+.contact-name-row {
+  display: flex;
+  gap: 32px;
+}
+
+.contact-name-row .form-group {
+  flex: 1;
+}
+
+.required {
+  color: red;
+}
+
+.contact-submit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+
+/* css style for hobspot */
+
+.hubspot-link-box {
+  width: calc(100% - 80px);
+  margin: 48px auto 0 auto;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hubspot-link-box a {
+  color: #374151;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.hubspot-link-box span {
+  color: #374151;
+}
+
+
+.hubspot-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}

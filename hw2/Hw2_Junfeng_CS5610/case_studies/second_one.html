@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Declare the type of the file and the language used in the file. -->
+
+<head>
+  <!-- Define the metadata and configuration information about the webpage. -->
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Second Case Study - Acme Corp</title>
+  <!-- Sets the title shown in the browser tab. -->
+  <link rel="icon" type="image/x-icon" href="../Material/favicon.ico">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Link the external CSS stylesheet to this HTML page. -->
+</head>
+
+<body>
+
+  <header>
+        <nav id="main-nav">
+
+        </nav>
+            
+  </header>
+
+
+  <main>
+
+    <article class="case-study-detail">
+      <!-- An article element with the class "case-study-detail". -->
+
+      <div class="case-study-title-row">
+
+        <h1>My second case study</h1>
+
+        <span class="badge">Gated</span>
+        <!-- The badge shows that this case study requires access approval. -->
+
+      </div>
+
+
+      <p class="case-study-summary">
+        This case study requires prior approval.
+      </p>
+
+
+      <div id="gated-access-box" class="access-box">
+
+        <h2>Access this case study</h2>
+
+        <p>
+          Enter your email to read the full content.
+        </p>
+
+
+        <form id="access-form">
+
+          <input
+            type="email"
+            id="access-email"
+            placeholder="you@example.com"
+            required
+          >
+
+          <button type="submit">
+            Get access
+          </button>
+
+        </form>
+
+      </div>
+
+
+      <div id="gated-content" class="hidden">
+
+        <p>
+          This is the body text for the gated case study -- you got it!
+        </p>
+
+      </div>
+
+    </article>
+
+  </main>
+
+
+  <footer>
+    <!-- The footer displayed at the bottom of the webpage. -->
+
+    © 2026 Acme Corp. All rights reserved.
+  </footer>
+
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <!-- Load JavaScript to control the gated access form and show the hidden case study content. -->
+
+</body>
+
+</html>
