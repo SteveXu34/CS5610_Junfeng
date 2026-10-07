@@ -1,0 +1,65 @@
+2026-10-01 13:58:29.311 EDT [49093] LOG:  starting PostgreSQL 18.6 on aarch64-apple-darwin20.0.0, compiled by clang version 21.1.8, 64-bit
+2026-10-01 13:58:29.312 EDT [49093] LOG:  listening on IPv6 address "::1", port 5432
+2026-10-01 13:58:29.312 EDT [49093] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-10-01 13:58:29.314 EDT [49093] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-10-01 13:58:29.318 EDT [49099] LOG:  database system was shut down at 2026-10-01 13:52:41 EDT
+2026-10-01 13:58:29.321 EDT [49093] LOG:  database system is ready to accept connections
+2026-10-01 14:03:29.320 EDT [49097] LOG:  checkpoint starting: time
+2026-10-01 14:05:12.543 EDT [49097] LOG:  checkpoint complete: wrote 1019 buffers (6.2%), wrote 3 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=103.198 s, sync=0.009 s, total=103.223 s; sync files=317, longest=0.001 s, average=0.001 s; distance=4865 kB, estimate=4865 kB; lsn=0/1C4D520, redo lsn=0/1C4D490
+2026-10-01 14:13:29.549 EDT [49097] LOG:  checkpoint starting: time
+2026-10-01 14:13:33.836 EDT [49097] LOG:  checkpoint complete: wrote 42 buffers (0.3%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=4.281 s, sync=0.004 s, total=4.288 s; sync files=38, longest=0.001 s, average=0.001 s; distance=199 kB, estimate=4398 kB; lsn=0/1C7F3D0, redo lsn=0/1C7F378
+2026-10-01 14:18:29.838 EDT [49097] LOG:  checkpoint starting: time
+2026-10-01 14:18:33.100 EDT [49097] LOG:  checkpoint complete: wrote 32 buffers (0.2%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=3.253 s, sync=0.003 s, total=3.262 s; sync files=8, longest=0.002 s, average=0.001 s; distance=219 kB, estimate=3980 kB; lsn=0/1CB62B0, redo lsn=0/1CB6258
+2026-10-06 22:32:13.565 EDT [49097] LOG:  checkpoint starting: time
+2026-10-06 22:32:13.686 EDT [49097] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.104 s, sync=0.001 s, total=0.122 s; sync files=1, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=3582 kB; lsn=0/1CB6520, redo lsn=0/1CB64C8
+2026-10-06 22:32:46.094 EDT [80717] ERROR:  source database "postgres" is being accessed by other users
+2026-10-06 22:32:46.094 EDT [80717] DETAIL:  There is 1 other session using the database.
+2026-10-06 22:32:46.094 EDT [80717] STATEMENT:  CREATE DATABASE classtest
+	OWNER = flwf34
+	TEMPLATE = postgres
+	ENCODING = 'UTF8'
+	TABLESPACE = pg_default
+2026-10-06 22:50:55.590 EDT [82582] ERROR:  source database "postgres" is being accessed by other users
+2026-10-06 22:50:55.590 EDT [82582] DETAIL:  There are 4 other sessions using the database.
+2026-10-06 22:50:55.590 EDT [82582] STATEMENT:  CREATE DATABASE "Classtest"
+	OWNER = flwf34
+	TEMPLATE = postgres
+	ENCODING = 'UTF8'
+	TABLESPACE = pg_default
+2026-10-06 23:13:25.749 EDT [83484] FATAL:  terminating connection due to administrator command
+2026-10-06 23:13:34.144 EDT [82642] FATAL:  terminating connection due to administrator command
+2026-10-06 23:13:43.826 EDT [82587] FATAL:  terminating connection due to administrator command
+2026-10-06 23:13:48.101 EDT [82583] FATAL:  terminating connection due to administrator command
+2026-10-06 23:13:51.243 EDT [82585] FATAL:  terminating connection due to administrator command
+2026-10-06 23:14:10.784 EDT [85550] WARNING:  PID 49096 is not a PostgreSQL backend process
+2026-10-06 23:14:14.329 EDT [85558] WARNING:  PID 49095 is not a PostgreSQL backend process
+2026-10-06 23:14:16.867 EDT [85564] WARNING:  PID 49100 is not a PostgreSQL backend process
+2026-10-06 23:14:27.023 EDT [85583] WARNING:  PID 49094 is not a PostgreSQL backend process
+2026-10-06 23:14:27.024 EDT [85583] WARNING:  PID 49095 is not a PostgreSQL backend process
+2026-10-06 23:14:27.024 EDT [85583] WARNING:  PID 49096 is not a PostgreSQL backend process
+2026-10-06 23:14:27.024 EDT [85583] WARNING:  PID 49097 is not a PostgreSQL backend process
+2026-10-06 23:14:27.024 EDT [85583] WARNING:  PID 49098 is not a PostgreSQL backend process
+2026-10-06 23:14:27.024 EDT [85583] WARNING:  PID 49100 is not a PostgreSQL backend process
+2026-10-06 23:16:52.925 EDT [85826] ERROR:  source database "postgres" is being accessed by other users
+2026-10-06 23:16:52.925 EDT [85826] DETAIL:  There are 2 other sessions using the database.
+2026-10-06 23:16:52.925 EDT [85826] STATEMENT:  CREATE DATABASE "ClassTest"
+	OWNER = flwf34
+	TEMPLATE = postgres
+	ENCODING = 'UTF8'
+	TABLESPACE = pg_default
+2026-10-06 23:25:37.974 EDT [82586] FATAL:  terminating connection due to administrator command
+2026-10-06 23:25:37.974 EDT [85827] FATAL:  terminating connection due to administrator command
+2026-10-06 23:25:37.974 EDT [85826] FATAL:  terminating connection due to administrator command
+2026-10-06 23:26:19.595 EDT [86872] WARNING:  PID 86804 is not a PostgreSQL backend process
+2026-10-06 23:26:27.957 EDT [86888] WARNING:  PID 86880 is not a PostgreSQL backend process
+2026-10-06 23:27:15.036 EDT [86972] WARNING:  PID 86959 is not a PostgreSQL backend process
+2026-10-06 23:27:17.950 EDT [86981] WARNING:  PID 86959 is not a PostgreSQL backend process
+2026-10-06 23:28:35.819 EDT [87083] ERROR:  source database "postgres" is being accessed by other users
+2026-10-06 23:28:35.819 EDT [87083] DETAIL:  There are 2 other sessions using the database.
+2026-10-06 23:28:35.819 EDT [87083] STATEMENT:  CREATE DATABASE "class"
+	OWNER = flwf34
+	TEMPLATE = postgres
+	ENCODING = 'UTF8'
+	TABLESPACE = pg_default
+2026-10-06 23:32:13.710 EDT [49097] LOG:  checkpoint starting: time
+2026-10-06 23:33:51.274 EDT [49097] LOG:  checkpoint complete: wrote 965 buffers (5.9%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=97.548 s, sync=0.010 s, total=97.564 s; sync files=302, longest=0.001 s, average=0.001 s; distance=4448 kB, estimate=4448 kB; lsn=0/210E6D0, redo lsn=0/210E640

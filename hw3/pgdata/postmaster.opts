@@ -1,0 +1,1 @@
+/Users/flwf34/Documents/23CS5610/tool/miniforge/envs/fastapi-server/bin/postgres "-D" "pgdata"
