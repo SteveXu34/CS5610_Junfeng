@@ -42,55 +42,127 @@ if (mainNav) {
 
 
 
+// const productList = document.getElementById("product-list");
+// /* Search the element whose <div id is product-list> and store it in productList. */
+
+// if (productList) {
+//   products.forEach(function(product) {
+//     /* For each element in products should execute the following opearation.*/
+//     const productItem = document.createElement("div");
+//     // Create a new div element and store it in productItem.
+//     productItem.innerHTML = `
+//       <h2>${product.name}</h2>
+//       <p>${product.description}</p>
+//     `;
+//     // Set the html information for the div block, like setting the name and description.
+
+//     productList.appendChild(productItem);
+//     // Add this productItem into the productList.
+//   });
+// }
+
+// -------------------------------- hw 4--------------------------------------
 const productList = document.getElementById("product-list");
-/* Search the element whose <div id is product-list> and store it in productList. */
 
 if (productList) {
-  products.forEach(function(product) {
-    /* For each element in products should execute the following opearation.*/
-    const productItem = document.createElement("div");
-    // Create a new div element and store it in productItem.
-    productItem.innerHTML = `
-      <h2>${product.name}</h2>
-      <p>${product.description}</p>
-    `;
-    // Set the html information for the div block, like setting the name and description.
 
-    productList.appendChild(productItem);
-    // Add this productItem into the productList.
-  });
+  fetch("http://127.0.0.1:8000/products")
+  // send a HTTP reuqest to the server http://127.0.0.1:8000 and get end point /products.
+    .then(function(response) {
+      // function(response) means when get a response then return the response as a json file format.
+      return response.json();
+    })
+    .then(function(products) {
+      // the products is just a variable representing the response.json()
+
+      products.forEach(function(product) {
+
+        const productItem = document.createElement("div");
+        // Create a new div element and store it in productItem.
+
+        productItem.innerHTML = `
+          <h2>${product.name}</h2>
+          <p>${product.description}</p>
+        `;
+         // Set the html information for the div block, like setting the name and description.
+        productList.appendChild(productItem);
+        // Add this productItem into the productList.
+
+
+      });
+
+    });
+
 }
 
 
-const caseStudyList = document.getElementById("case-study-list");
+
 /* Search the element whose <ul id is case-study-list>. in html file and store it in caseStudyList.*/
-if (caseStudyList) {
-  caseStudies.forEach(function(caseStudy) {
-    /* Loop through each case study.*/
-    const item = document.createElement("li");
-        // Create a new list element and store it in item.
-    item.className = "case-study-item";
-    // Add a class name for the item, so that the html file can link this element with the css funciton .case-study-item{}.
+// if (caseStudyList) {
+//   caseStudies.forEach(function(caseStudy) {
+//     /* Loop through each case study.*/
+//     const item = document.createElement("li");
+//         // Create a new list element and store it in item.
+//     item.className = "case-study-item";
+//     // Add a class name for the item, so that the html file can link this element with the css funciton .case-study-item{}.
 
-    item.innerHTML = `
-      <div class="case-study-title-row">
+//     item.innerHTML = `
+//       <div class="case-study-title-row">
 
-        <h2>
-          <a href="${caseStudy.link}">
-            ${caseStudy.title}
-          </a>
-        </h2>
+//         <h2>
+//           <a href="${caseStudy.link}">
+//             ${caseStudy.title}
+//           </a>
+//         </h2>
 
-        ${caseStudy.gated ? '<span class="badge">Gated</span>' : ''}
+//         ${caseStudy.gated ? '<span class="badge">Gated</span>' : ''}
 
-      </div>
+//       </div>
 
-      <p>${caseStudy.summary}</p>
-    `;
-    // Set the html information for the ul <ul id="case-study-list"> block, like setting the name and description.
+//       <p>${caseStudy.summary}</p>
+//     `;
+//     // Set the html information for the ul <ul id="case-study-list"> block, like setting the title and summart, gated status.
         
-    caseStudyList.appendChild(item);
-  });
+//     caseStudyList.appendChild(item);
+//   });
+// }
+const caseStudyList = document.getElementById("case-study-list");
+// ------------------------------------ hw4 -------------------------------------------
+if (caseStudyList) {
+
+  fetch("http://127.0.0.1:8000/case-studies")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(caseStudies) {
+
+      caseStudies.forEach(function(caseStudy) {
+
+        const item = document.createElement("li");
+        item.className = "case-study-item";
+        // Add a class name for the item, so that the html file can link this element with the css funciton .case-study-item{}.
+        item.innerHTML = `
+          <div class="case-study-title-row">
+
+            <h2>
+              <a href="${caseStudy.link}">
+                ${caseStudy.title}
+              </a>
+            </h2>
+
+            ${caseStudy.gated ? '<span class="badge">Gated</span>' : ''}
+
+          </div>
+
+          <p>${caseStudy.summary}</p>
+        `;
+        // Set the html information for the ul <ul id="case-study-list"> block, like setting the title and summart, gated status.
+        caseStudyList.appendChild(item);
+
+      });
+
+    });
+
 }
 
 
@@ -121,40 +193,71 @@ if (accessForm) {
 const teamList = document.getElementById("team-list");
 /* Search the element whose id is team-list and store it in teamList. */
 
+// if (teamList) {
+
+//   teamMembers.forEach(function(member) {
+//     /* For each object in teamMembers, create one team member item. */
+
+//     const item = document.createElement("li");
+//     // Create a new <li> element.
+
+//     item.className = "team-member";
+//     // Add a class name so CSS can style each team member.
+
+//     item.innerHTML = `
+//       <img src="${member.image}" alt="${member.name}" class="team-member-image">
+
+//       <div class="team-member-info">
+
+//         <p class="team-member-name">${member.name}</p>
+
+//         <p class="team-member-role">${member.role}</p>
+
+//         <p>${member.bio1}</p>
+
+//         <p>${member.bio2}</p>
+
+//       </div>
+//     `;
+//     // Insert the member's image, name, role and bio into the <li>.
+
+//     teamList.appendChild(item);
+//     // Add the completed <li> into the <ul id="team-list">.
+//   });
+
+// }
+// ---------------------------hw4 --------------------------------------
 if (teamList) {
 
-  teamMembers.forEach(function(member) {
-    /* For each object in teamMembers, create one team member item. */
+  fetch("http://127.0.0.1:8000/team-members")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(teamMembers) {
 
-    const item = document.createElement("li");
-    // Create a new <li> element.
+      teamMembers.forEach(function(member) {
 
-    item.className = "team-member";
-    // Add a class name so CSS can style each team member.
+        const item = document.createElement("li");
+        item.className = "team-member";
 
-    item.innerHTML = `
-      <img src="${member.image}" alt="${member.name}" class="team-member-image">
+        item.innerHTML = `
+          <img src="${member.image}" alt="${member.name}" class="team-member-image">
 
-      <div class="team-member-info">
+          <div class="team-member-info">
+            <p class="team-member-name">${member.name}</p>
+            <p class="team-member-role">${member.role}</p>
+            <p>${member.bio1}</p>
+            <p>${member.bio2}</p>
+          </div>
+        `;
 
-        <p class="team-member-name">${member.name}</p>
+        teamList.appendChild(item);
 
-        <p class="team-member-role">${member.role}</p>
+      });
 
-        <p>${member.bio1}</p>
-
-        <p>${member.bio2}</p>
-
-      </div>
-    `;
-    // Insert the member's image, name, role and bio into the <li>.
-
-    teamList.appendChild(item);
-    // Add the completed <li> into the <ul id="team-list">.
-  });
+    });
 
 }
-
 
 // For contact.html
 const contactForm = document.getElementById("contact-form");
