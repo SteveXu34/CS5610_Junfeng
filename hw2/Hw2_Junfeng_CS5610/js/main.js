@@ -66,7 +66,7 @@ const productList = document.getElementById("product-list");
 
 if (productList) {
 
-  fetch("http://127.0.0.1:8000/products")
+  fetch("https://cs-5610-junfeng-hw4-server.vercel.app/products")
   // send a HTTP reuqest to the server http://127.0.0.1:8000 and get end point /products.
     .then(function(response) {
       // function(response) means when get a response then return the response as a json file format.
@@ -130,7 +130,7 @@ const caseStudyList = document.getElementById("case-study-list");
 // ------------------------------------ hw4 -------------------------------------------
 if (caseStudyList) {
 
-  fetch("http://127.0.0.1:8000/case-studies")
+  fetch("https://cs-5610-junfeng-hw4-server.vercel.app/case-studies")
     .then(function(response) {
       return response.json();
     })
@@ -229,7 +229,7 @@ const teamList = document.getElementById("team-list");
 // ---------------------------hw4 --------------------------------------
 if (teamList) {
 
-  fetch("http://127.0.0.1:8000/team-members")
+  fetch("https://cs-5610-junfeng-hw4-server.vercel.app/team-members")
     .then(function(response) {
       return response.json();
     })

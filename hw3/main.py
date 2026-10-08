@@ -12,7 +12,8 @@ DATABASE_URL = os.environ["DATABASE_URL"]
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5500"],
+    allow_origins=["http://localhost:5500",
+                   "https://cs-5610-junfeng-hw2.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
