@@ -1,17 +1,13 @@
-.PHONY: run test curl
+.PHONY: setup test
 
-# Start the dev server. --reload restarts on code changes (but NOT on
-# environment changes -- a new DATABASE_URL needs a real restart).
-run:
-	uvicorn main:app --reload
+PYTHON = ../.venv/bin/python
 
+# Install dependencies
+setup:
+	python3 -m venv ../.venv
+	$(PYTHON) -m pip install -r requirements.txt
+
+# Run tests with Supabase DATABASE_URL
 test:
-	pytest
-
-# Quick manual sanity check -- "does this endpoint even respond right now?"
-# Requires `make run` already going in another terminal. Update these as you
-# add routes.
-curl:
-	curl http://127.0.0.1:8000/; echo
-	curl http://127.0.0.1:8000/hello/world; echo
-	curl http://127.0.0.1:8000/greetings; echo
+	@set -a; . ./environment.env; set +a; \
+	$(PYTHON) -m pytest -v
