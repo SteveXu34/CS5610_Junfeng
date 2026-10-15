@@ -1,0 +1,12 @@
+name: fastapi-server
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - make
+  - postgresql
+  - fastapi
+  - uvicorn
+  - psycopg2-binary
+  - pytest
+  - httpx

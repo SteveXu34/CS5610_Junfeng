@@ -13,6 +13,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5500",
+                    "http://localhost:5173", # Allow React +Vite to access.
                    "https://cs-5610-junfeng-hw2.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
