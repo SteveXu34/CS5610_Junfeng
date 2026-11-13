@@ -1,0 +1,94 @@
+/* S5 Ask component. Classes are prefixed s5- so they cannot clash with the
+   shared layout or other stories; colours come from App.css variables, with
+   fallbacks so the component also renders on its own. */
+
+.s5-ask {
+  display: grid;
+  gap: 12px;
+  color: var(--ink, #202020);
+}
+
+.s5-ask-form {
+  display: flex;
+  gap: 8px;
+}
+
+.s5-ask-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--line, #e9e6dd);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: var(--surface, #ffffff);
+  color: inherit;
+}
+
+.s5-ask-button {
+  padding: 8px 16px;
+  border: 1px solid var(--line, #e9e6dd);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.s5-ask-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.s5-answer {
+  display: grid;
+  gap: 8px;
+}
+
+.s5-answer-text {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.s5-badge {
+  justify-self: start;
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.s5-badge-ok {
+  border: 1px solid #1f7a4d;
+  background: #e6f4ec;
+  color: #14553a;
+}
+
+.s5-badge-muted {
+  border: 1px solid var(--line, #e9e6dd);
+  background: var(--surface, #f5f3ee);
+  color: var(--muted, #77746d);
+}
+
+.s5-status {
+  color: var(--muted, #77746d);
+}
+
+.s5-error {
+  color: #a3261c;
+}
+
+.s5-footer {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line, #e9e6dd);
+  font-size: 0.875rem;
+  color: var(--muted, #77746d);
+}
+
+.s5-notes {
+  margin: 0 0 8px;
+  padding-left: 18px;
+}
+
+.s5-sources p {
+  margin: 4px 0 0;
+}
