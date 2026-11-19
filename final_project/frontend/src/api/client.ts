@@ -82,6 +82,19 @@ export function apiPost<T>(
 }
 
 /**
+ * DELETE request.
+ */
+export function apiDelete<T>(
+  path: string,
+  signal?: AbortSignal
+): Promise<T> {
+  return apiRequest<T>(path, {
+    method: 'DELETE',
+    signal,
+  });
+}
+
+/**
  * Backend health endpoint.
  *
  * GET /api/health

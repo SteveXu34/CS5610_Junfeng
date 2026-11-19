@@ -1,0 +1,10 @@
+.report { margin-top: 8px; font-size: 13px; }
+.report-title { font-weight: 600; margin-bottom: 4px; }
+.report-metric { font-size: 28px; font-weight: 700; color: var(--ink); margin: 4px 0; }
+.report-table { width: 100%; border-collapse: collapse; margin: 6px 0; }
+.report-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 2px 4px; }
+.report-table td { border-top: 1px solid var(--line); padding: 3px 4px; }
+.report-table td.num, .report-table th.num { text-align: right; }
+.report-summary, .report-sources, .report-empty { color: var(--muted); font-size: 11px; margin: 2px 0; }
+.report-caveats { color: var(--muted); font-size: 11px; margin: 4px 0; padding-left: 16px; }
+.report-sources a { color: #4d493d; text-decoration: underline; }

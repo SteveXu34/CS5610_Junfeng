@@ -1,0 +1,400 @@
+/* ==========================================================
+   HQE: LOGIN-FIRST ENTRY EXPERIENCE
+   Cream / charcoal / pale yellow design
+   ========================================================== */
+
+/* ==========================================================
+   1. Entry screen and layout
+   ========================================================== */
+
+.hqe-auth-page {
+  display: grid;
+  align-items: center;
+
+  min-height: 100vh;
+  padding: 52px 32px;
+
+  background: #f8f7f2;
+  color: #202020;
+}
+
+.hqe-auth-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+  align-items: center;
+  gap: clamp(40px, 7vw, 110px);
+
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ==========================================================
+   2. Branding and introduction
+   ========================================================== */
+
+.hqe-auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.hqe-auth-brand-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 13px;
+  background: #202020;
+  color: #fff29a;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.hqe-auth-eyebrow {
+  margin: 60px 0 18px;
+
+  color: #7d7358;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hqe-auth-intro h1 {
+  max-width: 600px;
+  margin: 0;
+
+  font-size: clamp(35px, 4vw, 59px);
+  line-height: 1.12;
+  letter-spacing: -0.06em;
+}
+
+.hqe-auth-intro h1 span {
+  color: #aaa294;
+}
+
+.hqe-auth-description {
+  max-width: 500px;
+  margin: 24px 0 0;
+
+  color: #68645d;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.hqe-auth-context {
+  max-width: 460px;
+  margin-top: 22px;
+
+  color: #8b857a;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ==========================================================
+   3. Login / register panel
+   ========================================================== */
+
+.hqe-auth-card {
+  overflow: hidden;
+
+  border: 1px solid #e9e6dd;
+  border-radius: 23px;
+
+  background: #ffffff;
+  box-shadow: 0 18px 55px rgba(40, 37, 20, 0.06);
+}
+
+.hqe-auth-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  padding: 7px;
+  gap: 5px;
+
+  border-bottom: 1px solid #e9e6dd;
+  background: #fbfaf7;
+}
+
+.hqe-auth-tabs button {
+  padding: 12px 10px;
+
+  border: 0;
+  border-radius: 11px;
+
+  background: transparent;
+  color: #6b665d;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.hqe-auth-tabs button.active {
+  background: #fff29a;
+  color: #202020;
+}
+
+.hqe-auth-card-content {
+  padding: 29px;
+}
+
+.hqe-auth-card h2 {
+  margin: 0 0 6px;
+
+  font-size: 25px;
+  letter-spacing: -0.04em;
+}
+
+.hqe-auth-card-subtitle {
+  margin: 0 0 24px;
+
+  color: #767167;
+  font-size: 13px;
+}
+
+/* ==========================================================
+   4. Form fields
+   ========================================================== */
+
+.hqe-auth-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.hqe-auth-card form > label:not(.hqe-auth-show-password) {
+  margin-bottom: 7px;
+
+  color: #38352f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hqe-auth-card input[type='email'],
+.hqe-auth-card input[type='password'],
+.hqe-auth-card input[type='text'] {
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 17px;
+  padding: 11px 13px;
+
+  border: 1px solid #dcd8cd;
+  border-radius: 10px;
+
+  background: #fffefa;
+  color: #202020;
+
+  font: inherit;
+  font-size: 14px;
+}
+
+.hqe-auth-card input:focus-visible,
+.hqe-auth-card button:focus-visible,
+.hqe-auth-sessionbar button:focus-visible {
+  outline: 3px solid #d0b936;
+  outline-offset: 3px;
+}
+
+.hqe-auth-hint {
+  margin: -10px 0 16px;
+
+  color: #77746d;
+  font-size: 12px;
+}
+
+.hqe-auth-show-password {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0 0 17px;
+
+  color: #6c675f;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.hqe-auth-show-password input {
+  accent-color: #9a821f;
+}
+
+.hqe-auth-submit {
+  width: 100%;
+  min-height: 45px;
+  padding: 11px 16px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: #202020;
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.hqe-auth-submit:hover:not(:disabled) {
+  background: #454545;
+}
+
+.hqe-auth-submit:disabled,
+.hqe-auth-tabs button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hqe-auth-footnote {
+  margin: 17px 0 0;
+
+  color: #857f73;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.hqe-auth-error {
+  margin: 0 0 15px;
+  padding: 12px 13px;
+
+  border: 1px solid #f0c5bb;
+  border-radius: 10px;
+
+  background: #fff1ec;
+  color: #8b3427;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hqe-auth-error p {
+  margin: 0 0 8px;
+}
+
+.hqe-auth-text-action {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #713423;
+
+  font: inherit;
+  font-weight: 750;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   5. Session check and logout bar
+   ========================================================== */
+
+.hqe-auth-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  min-height: 100vh;
+  background: #f8f7f2;
+  color: #605c52;
+}
+
+.hqe-auth-app {
+  min-height: 100vh;
+  background: #f8f7f2;
+}
+
+.hqe-auth-sessionbar {
+  border-bottom: 1px solid #e9e6dd;
+  background: #f1efe5;
+}
+
+.hqe-auth-sessionbar-inner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 17px;
+
+  max-width: 1280px;
+  min-height: 47px;
+  margin: 0 auto;
+  padding: 8px 36px;
+
+  color: #645e51;
+  font-size: 12px;
+}
+
+.hqe-auth-sessionbar-inner strong {
+  color: #202020;
+}
+
+.hqe-auth-sessionbar button {
+  padding: 7px 12px;
+
+  border: 1px solid #d8c784;
+  border-radius: 9px;
+
+  background: #fff29a;
+  color: #2f2a1b;
+
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.hqe-auth-sessionbar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hqe-auth-logout-error {
+  margin: 0;
+  padding: 4px 36px 12px;
+
+  color: #8b3427;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* ==========================================================
+   6. Responsive layout
+   ========================================================== */
+
+@media (max-width: 800px) {
+  .hqe-auth-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 520px;
+  }
+
+  .hqe-auth-eyebrow {
+    margin-top: 35px;
+  }
+
+  .hqe-auth-card-content {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hqe-auth-page {
+    padding: 32px 20px;
+  }
+
+  .hqe-auth-sessionbar-inner {
+    justify-content: flex-start;
+    padding: 9px 20px;
+  }
+}

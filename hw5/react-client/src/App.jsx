@@ -1,122 +1,116 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+// Import useState to manage component state.
+
+import CaseStudies from './components/CaseStudies'
+import CaseStudyDetail from './components/CaseStudyDetail'
+import Team from './components/Team'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Products from './components/Products'
+import Blog from './components/Blog'
+import Studio from './components/Studio'
+import Contact from './components/Contact'
+import ContactSuccess from './components/ContactSuccess'
+import HubSpotPlaceholder from './components/HubSpotPlaceholder'
+import './style/style.css'
+// Import reusable React components and the shared CSS stylesheet.
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  // Store the currently selected case study.
+  // null means no case study is selected.
+  const [selectedStudy, setSelectedStudy] = useState(null)
+  // selectedStudy is the case study chosen for now.
+  // setSelectedStudy change the case study
+  // useStat(null) set the initial value as null.
+
+  // Track which page should be displayed.
+  // The default page is 'case-studies'.
+  const [currentPage, setCurrentPage] = useState('case-studies') // useState will return two elements['case-studies',function()].
+
+  // Handle navigation between Case Studies and Team.
+  // This function is passed to the Header component as a prop.
+  function handleNavigate(page) {
+
+    // Clear the selected case study when changing pages.
+    setSelectedStudy(null)
+
+    // Update the current page and trigger a React re-render.
+    setCurrentPage(page)
+  }
+
+  // Return the UI based on the current React state.
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      {/* React Fragment groups multiple components
+          without creating an additional HTML element. */}
 
-      <div className="ticks"></div>
+      {/* Render the shared navigation header.
+          Pass handleNavigate to Header through the onNavigate prop.
+          Header can call this function when a navigation link is clicked. */}
+      <Header onNavigate={handleNavigate} />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <main>
+        {/* Conditional Rendering using ternary operators.
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+            If currentPage === 'team':
+              Display the Team component.
+
+            Otherwise, if selectedStudy is not null:
+              Display the selected Case Study detail.
+
+            Otherwise:
+              Display the Case Studies list.
+        */}
+
+        {currentPage === 'products' ? (
+          <Products /> // No Props, Render the Products.
+        ): currentPage === 'team' ? (
+          <Team />
+
+        ) : currentPage === 'blog' ? (
+          <Blog onNavigate={handleNavigate} />
+
+        ) : currentPage === 'studio' ? (
+          <Studio onNavigate={handleNavigate} /> //  Render the studio with handleNavigate function input.
+
+        ) : currentPage === 'contact' ? (
+          <Contact onNavigate={handleNavigate} />
+
+        ) : currentPage === 'contact-success' ? (
+          <ContactSuccess onNavigate={handleNavigate} />
+
+        ) : currentPage === 'hubspot' ? (
+          <HubSpotPlaceholder onNavigate={handleNavigate} />
+
+        ): selectedStudy ? (
+
+          // Render the selected Case Study detail.
+          // Changing the key resets the detail component's local state.
+          // Pass the selected study and a callback for returning to the list.
+          <CaseStudyDetail
+            key={selectedStudy.id}
+            study={selectedStudy}
+            onBack={() => setSelectedStudy(null)}
+          />
+
+        ) : (
+
+          // Render the Case Studies list.
+          // Pass setSelectedStudy so the child can update the selected study.
+          <CaseStudies onSelectStudy={setSelectedStudy} />
+
+        )}
+      </main>
+
+      {/* Render the shared footer. */}
+      <Footer />
+
+      {/* Navigation is now handled by Header.
+          The temporary page-switcher buttons have been removed. */}
     </>
   )
 }
 
 export default App
+// Export App so it can be imported by main.jsx.

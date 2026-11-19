@@ -1,0 +1,554 @@
+/* ==========================================================
+   S6: HOSPITAL INSPECTIONS
+   Patient-focused, pattern-first inspection timeline
+   ========================================================== */
+
+/* ==========================================================
+   1. Main component and heading
+   ========================================================== */
+
+.inspection-history {
+  color: var(--ink, #202020);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.inspection-history-heading {
+  margin-bottom: 22px;
+}
+
+.inspection-history-heading h2 {
+  margin: 4px 0;
+
+  font-size: clamp(23px, 3vw, 32px);
+  letter-spacing: -0.04em;
+}
+
+.inspection-eyebrow {
+  margin: 0;
+
+  color: #85754f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.inspection-subtitle,
+.inspection-help {
+  color: #6c675d;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* ==========================================================
+   2. Introduction and summary
+   ========================================================== */
+
+.inspection-intro h3,
+.inspection-patterns h3,
+.inspection-filter-heading h3 {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+  letter-spacing: -0.03em;
+}
+
+.inspection-intro p,
+.inspection-filter-heading p {
+  margin: 0;
+  color: #666156;
+}
+
+.inspection-summary {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 1fr)
+  );
+
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.inspection-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  padding: 18px;
+
+  border: 1px solid #e9e6dd;
+  border-radius: 14px;
+
+  background: #ffffff;
+}
+
+.inspection-summary strong {
+  font-size: 29px;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+.inspection-summary span {
+  color: #726e65;
+  font-size: 13px;
+}
+
+/* Data limitations */
+
+.inspection-caveat {
+  padding: 15px 18px;
+
+  border-radius: 12px;
+  background: #fffbe7;
+
+  color: #57503b;
+  font-size: 13px;
+}
+
+/* ==========================================================
+   3. Repeated citations
+   ========================================================== */
+
+.inspection-patterns {
+  margin: 28px 0 32px;
+}
+
+.inspection-pattern-list {
+  display: grid;
+  gap: 10px;
+
+  margin-top: 13px;
+}
+
+.inspection-pattern {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+
+  width: 100%;
+  padding: 15px 17px;
+
+  border: 1px solid #e9e6dd;
+  border-radius: 12px;
+
+  background: #fcfbf6;
+  color: #292720;
+
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.inspection-pattern:hover {
+  border-color: #c4af63;
+}
+
+.inspection-pattern span {
+  color: #635f56;
+  font-size: 13px;
+}
+
+.inspection-pattern small {
+  color: #615027;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   4. Timeline filters
+   ========================================================== */
+
+.inspection-filter-heading {
+  margin-bottom: 15px;
+  scroll-margin-top: 28px;
+}
+
+.inspection-filters {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 1fr)
+  );
+
+  gap: 14px;
+}
+
+.inspection-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  color: #474239;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.inspection-filters select,
+.inspection-filters input:not([type='checkbox']) {
+  width: 100%;
+  min-width: 0;
+
+  padding: 11px 12px;
+
+  border: 1px solid #dedbd3;
+  border-radius: 10px;
+
+  background: #fffefa;
+  color: #202020;
+
+  font: inherit;
+  font-weight: 400;
+}
+
+.inspection-filters .inspection-filter-check {
+  grid-column: 1 / -1;
+
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+
+  cursor: pointer;
+}
+
+.inspection-active-filter {
+  padding: 10px 12px;
+
+  border-radius: 10px;
+  background: #fffbe7;
+
+  font-size: 13px;
+}
+
+.inspection-active-filter button,
+.inspection-clear,
+.inspection-link-button {
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #55451e;
+
+  font: inherit;
+  font-weight: 750;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.inspection-result-count {
+  margin: 14px 0;
+
+  color: #666156;
+  font-size: 13px;
+}
+
+/* ==========================================================
+   5. Inspection timeline cards
+   ========================================================== */
+
+.inspection-list {
+  display: grid;
+  gap: 12px;
+
+  margin: 16px 0;
+}
+
+.inspection-event {
+  overflow: hidden;
+
+  border: 1px solid #e5e2d8;
+  border-radius: 14px;
+
+  background: #ffffff;
+}
+
+.inspection-event > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 17px 19px;
+
+  list-style: none;
+  cursor: pointer;
+}
+
+.inspection-event > summary::-webkit-details-marker {
+  display: none;
+}
+
+.inspection-event > summary::after {
+  content: '+';
+
+  flex: 0 0 auto;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.inspection-event[open] > summary::after {
+  content: '−';
+}
+
+.inspection-event-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inspection-event-title strong {
+  font-size: 16px;
+}
+
+.inspection-event-title small,
+.inspection-event-count {
+  color: #6d675e;
+  font-size: 13px;
+}
+
+.inspection-event-count {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* ==========================================================
+   6. Expanded inspection details
+   ========================================================== */
+
+.inspection-event-body {
+  padding: 6px 19px 19px;
+
+  border-top: 1px solid #efede6;
+}
+
+.inspection-findings {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.inspection-findings > li {
+  padding: 17px 0;
+
+  border-bottom: 1px solid #f0eee8;
+}
+
+.inspection-findings > li:last-child {
+  border-bottom: 0;
+}
+
+.inspection-finding-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+
+.inspection-finding-heading strong {
+  font-size: 15px;
+}
+
+.inspection-tag {
+  padding: 4px 9px;
+
+  border-radius: 30px;
+  background: #fff29a;
+
+  color: #29261c;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.inspection-repeat-note {
+  margin: 12px 0 0;
+
+  color: #6b521d;
+  font-size: 13px;
+}
+
+/* ==========================================================
+   7. Original inspector narratives
+   ========================================================== */
+
+.inspection-narrative {
+  margin-top: 12px;
+}
+
+.inspection-narrative-text {
+  padding: 14px 16px;
+
+  border: 1px solid #e8e3d0;
+  border-radius: 11px;
+
+  background: #fbf9ee;
+}
+
+.inspection-narrative-text > strong {
+  display: block;
+  margin-bottom: 9px;
+
+  font-size: 14px;
+}
+
+.inspection-narrative-text p {
+  margin: 0 0 10px;
+
+  color: #37352f;
+
+  font-size: 14px;
+  line-height: 1.75;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.inspection-narrative-clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+
+  overflow: hidden;
+}
+
+.inspection-inline-error {
+  padding: 12px;
+
+  border-radius: 10px;
+  background: #fff0ed;
+
+  color: #973526;
+}
+
+/* Memo and non-citation rows */
+
+.inspection-memos {
+  margin: 12px 0;
+  padding: 12px;
+
+  border-radius: 10px;
+  background: #f6f4ee;
+}
+
+.inspection-memos > summary {
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   8. Loading, errors, and pagination
+   ========================================================== */
+
+.inspection-status,
+.inspection-empty,
+.inspection-alert {
+  padding: 20px;
+
+  border: 1px solid #e9e6dd;
+  border-radius: 14px;
+
+  background: #ffffff;
+}
+
+.inspection-alert {
+  border-color: #cc958a;
+}
+
+.inspection-alert button,
+.inspection-load-more {
+  padding: 10px 14px;
+
+  border: 1px solid #e4d373;
+  border-radius: 10px;
+
+  background: #fff29a;
+  color: #29261c;
+
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.inspection-load-more {
+  display: block;
+  margin: 18px auto;
+}
+
+/* ==========================================================
+   9. CMS sources
+   ========================================================== */
+
+.inspection-sources {
+  margin-top: 28px;
+  padding-top: 20px;
+
+  border-top: 1px solid #e9e6dd;
+
+  color: #69665f;
+  font-size: 13px;
+}
+
+.inspection-sources > summary {
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.inspection-sources ul {
+  padding-left: 20px;
+}
+
+.inspection-sources a {
+  color: #373025;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================
+   10. Keyboard focus
+   ========================================================== */
+
+.inspection-event summary:focus-visible,
+.inspection-memos summary:focus-visible,
+.inspection-sources summary:focus-visible,
+.inspection-history button:focus-visible,
+.inspection-history input:focus-visible,
+.inspection-history select:focus-visible {
+  outline: 3px solid #d0b936;
+  outline-offset: 3px;
+}
+
+/* ==========================================================
+   11. Responsive mobile layout
+   ========================================================== */
+
+@media (max-width: 700px) {
+  .inspection-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .inspection-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .inspection-event > summary {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .inspection-event-count {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+  }
+}

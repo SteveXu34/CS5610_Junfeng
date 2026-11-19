@@ -1,6 +1,10 @@
 /* ==========================================================
    HOSPITAL QUALITY EXPLORER
-   Public-facing, editorial interface
+   Cream / charcoal / pale yellow editorial design
+   ========================================================== */
+
+/* ==========================================================
+   1. Theme and global styles
    ========================================================== */
 
 :root {
@@ -10,10 +14,7 @@
   --muted: #77746d;
   --line: #e9e6dd;
   --yellow: #fff29a;
-  --yellow-light: #fffbe7;
 }
-
-/* Global layout */
 
 .site-shell {
   min-height: 100vh;
@@ -26,6 +27,7 @@
 }
 
 .site-shell button,
+.site-shell select,
 .site-shell textarea {
   font: inherit;
 }
@@ -36,18 +38,22 @@
 }
 
 .site-shell button:focus-visible,
-.site-shell a:focus-visible,
-.site-shell textarea:focus-visible {
+.site-shell select:focus-visible,
+.site-shell textarea:focus-visible,
+.site-shell a:focus-visible {
   outline: 3px solid #d0b936;
   outline-offset: 3px;
 }
 
-/* Header */
+/* ==========================================================
+   2. Header
+   ========================================================== */
 
 .site-header {
   max-width: 1280px;
-  margin: auto;
+  margin: 0 auto;
   padding: 30px 36px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,6 +64,7 @@
   display: flex;
   align-items: center;
   gap: 13px;
+
   font-size: 20px;
   font-weight: 750;
   letter-spacing: -0.04em;
@@ -66,75 +73,55 @@
 .site-brand-mark {
   width: 42px;
   height: 42px;
+
+  display: grid;
+  place-items: center;
+
   border-radius: 13px;
   background: var(--ink);
   color: var(--yellow);
-  display: grid;
-  place-items: center;
-  font-weight: 800;
+
   font-size: 24px;
+  font-weight: 800;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 28px;
 }
 
 .site-nav a {
   color: #69665f;
   font-size: 13px;
   font-weight: 600;
-  transition: color 0.2s;
 }
 
 .site-nav a:hover {
-  color: #000;
+  color: #000000;
 }
 
-/* Hero */
+/* ==========================================================
+   3. Homepage hero
+   ========================================================== */
 
-.hero {
-  max-width: 1280px;
+.hqe-home-hero {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 72px 36px 100px;
-
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  align-items: center;
-  gap: 66px;
-
-  position: relative;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 480px;
-  height: 480px;
-  left: -240px;
-  top: -130px;
-  border-radius: 50%;
-  background: #fff4b9;
-  filter: blur(85px);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.hero-intro {
-  position: relative;
-  z-index: 1;
+  padding: 62px 36px 36px;
 }
 
 .hero-eyebrow {
   display: flex;
   align-items: center;
   gap: 10px;
+
+  margin-bottom: 24px;
+
   color: #817b68;
   font-size: 10px;
-  letter-spacing: 0.15em;
   font-weight: 800;
-  margin-bottom: 24px;
+  letter-spacing: 0.15em;
 }
 
 .eyebrow-line {
@@ -143,155 +130,148 @@
   background: #d6ad38;
 }
 
-.hero h1 {
-  font-size: clamp(42px, 4.2vw, 68px);
-  line-height: 1.07;
-  letter-spacing: -0.065em;
-  font-weight: 750;
-  margin: 0 0 25px;
+.hqe-home-hero h1 {
+  margin: 0 0 18px;
+
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -0.06em;
 }
 
-.hero h1 span {
+.hqe-home-hero h1 span {
   color: #a6a092;
 }
 
-.hero-description {
-  font-size: 16px;
-  line-height: 1.9;
-  color: #6d6961;
-  max-width: 480px;
-}
+.hqe-home-hero > p {
+  margin: 0;
 
-.hero-note {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 32px;
-  color: #7d786c;
-  font-size: 12px;
-}
-
-.hero-note-icon {
-  background: #fff0a5;
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  color: #26241e;
-  font-size: 18px;
-}
-
-/* AI card */
-
-.ask-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 26px;
-  padding: 32px;
-  box-shadow: 0 24px 70px rgba(40, 37, 20, 0.07);
-  position: relative;
-  z-index: 1;
-}
-
-.ask-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 26px;
-}
-
-.assistant-symbol {
-  background: var(--yellow);
-  border-radius: 13px;
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  font-size: 25px;
-}
-
-.ask-title {
+  color: var(--muted);
   font-size: 15px;
-  font-weight: 750;
-}
-
-.ask-heading p {
-  font-size: 12px;
-  color: var(--muted);
-  margin: 4px 0 0;
-}
-
-.ask-card h2 {
-  font-size: 27px;
-  letter-spacing: -0.04em;
-  margin: 0 0 8px;
-}
-
-.ask-description {
-  color: var(--muted);
-  font-size: 13px;
   line-height: 1.7;
-  margin-bottom: 20px;
 }
 
-/* Question input */
+/* ==========================================================
+   4. Main workspace
+   ========================================================== */
 
-.question-input {
-  border: 1px solid #dedbd3;
-  border-radius: 17px;
-  padding: 15px;
-  background: #fdfdfa;
-  transition: border-color 0.2s;
+.hqe-workspace {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 36px 70px;
+
+  scroll-margin-top: 18px;
 }
 
-.question-input:focus-within {
-  border-color: #bcb17a;
+.hqe-mode-switch {
+  display: inline-flex;
+  gap: 4px;
+
+  margin: 20px 0;
+  padding: 5px;
+
+  border-radius: 99px;
+  background: #efeee8;
 }
 
-.question-input textarea {
-  resize: vertical;
-  min-height: 80px;
-  width: 100%;
+.hqe-mode-switch button {
+  border: 0;
+  border-radius: 99px;
+  padding: 12px 22px;
+
+  background: transparent;
+  color: #645f56;
+
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hqe-mode-switch button.active {
+  background: var(--yellow);
+  color: #26241e;
+}
+
+/* ==========================================================
+   5. Shared panels
+   ========================================================== */
+
+.hqe-chat-card,
+.hqe-search-card {
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  border-radius: 24px;
+
+  background: var(--surface);
+
+  box-shadow:
+    0 18px 55px rgba(40, 37, 20, 0.06);
+}
+
+.hqe-panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  padding: 22px 26px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.hqe-panel-heading h2 {
+  margin: 0 0 5px;
+
+  font-size: 23px;
+  letter-spacing: -0.04em;
+}
+
+.hqe-panel-heading p {
+  margin: 0;
+
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hqe-text-button {
+  padding: 8px;
+
   border: 0;
   background: transparent;
-  outline: none;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--ink);
+
+  color: #4d493d;
+
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.question-input textarea::placeholder {
-  color: #aaa69a;
-}
-
-.question-input-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.question-input-footer > span {
-  color: #aaa69a;
-  font-size: 11px;
+.hqe-text-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .ask-submit {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  background: var(--ink);
-  color: white;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 17px;
+
   border: 0;
   border-radius: 50px;
-  padding: 11px 17px;
-  cursor: pointer;
+
+  background: var(--ink);
+  color: #ffffff;
+
   font-size: 12px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .ask-submit:hover:not(:disabled) {
-  background: #444;
+  background: #444444;
 }
 
 .ask-submit:disabled {
@@ -299,265 +279,572 @@
   cursor: not-allowed;
 }
 
-.ask-submit span {
-  font-size: 17px;
+/* ==========================================================
+   6. Scrollable AI Chat
+   ========================================================== */
+
+.hqe-chat-scroll {
+  height: min(54vh, 540px);
+  min-height: 320px;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  padding: 25px;
+
+  background: #fbfaf7;
 }
 
-/* Suggestions */
+.hqe-chat-welcome {
+  max-width: 620px;
+  margin: 25px auto 0;
 
-.suggestions {
-  margin-top: 26px;
+  text-align: center;
 }
 
-.suggestions > p {
-  color: #989286;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  margin: 0 0 13px;
+.assistant-symbol {
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  margin: 0 auto 14px;
+
+  border-radius: 13px;
+  background: var(--yellow);
+
+  font-size: 25px;
 }
+
+.hqe-chat-welcome h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.hqe-chat-welcome p {
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Suggested questions */
 
 .suggestion-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 9px;
+
+  margin-top: 25px;
 }
 
 .suggestion-list button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f5f4ef;
-  color: #56534e;
+  padding: 10px 13px;
+
   border: 1px solid transparent;
   border-radius: 30px;
-  padding: 10px 13px;
-  cursor: pointer;
+
+  background: #f5f4ef;
+  color: #56534e;
+
   font-size: 11px;
-  text-align: left;
+  cursor: pointer;
 }
 
 .suggestion-list button:hover {
-  background: var(--yellow-light);
+  background: #fffbe7;
   border-color: #f0e5ab;
 }
 
-.suggestion-list button span {
-  color: #88816f;
-}
+/* Conversation messages */
 
-.ask-disclaimer {
-  margin: 22px 0 0;
-  padding-top: 16px;
-  border-top: 1px solid #efede7;
-  font-size: 11px;
-  line-height: 1.7;
-  color: #9a958b;
-}
-
-/* AI response */
-
-.chat-result {
-  margin-top: 22px;
-  padding: 20px;
-  background: #faf9f4;
-  border-radius: 15px;
-  border: 1px solid #e9e6dd;
-}
-
-.chat-result-label {
-  color: #897c54;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  margin: 0 0 10px;
-}
-
-.chat-result-question {
-  font-size: 13px;
-  font-weight: 650;
-  margin-bottom: 12px;
-}
-
-.chat-answer {
-  font-size: 14px;
-  line-height: 1.75;
-  white-space: pre-wrap;
-}
-
-.chat-sources,
-.chat-notes {
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #e6e2d8;
-  font-size: 11px;
-  line-height: 1.7;
-  color: #77716a;
-}
-
-.chat-sources p,
-.chat-notes p {
-  margin: 4px 0;
-}
-
-.sql-details {
-  margin-top: 14px;
-  font-size: 12px;
-}
-
-.sql-details summary {
-  cursor: pointer;
-  font-weight: 650;
-}
-
-.sql-details pre {
-  overflow-x: auto;
-  padding: 12px;
-  background: #efeee9;
-  border-radius: 8px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-size: 11px;
-}
-
-.chat-error {
-  color: #a73232;
-  background: #fff0f0;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 12px;
-  line-height: 1.6;
-  margin-top: 18px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Explore section */
-
-.explore-section {
-  background: #fff;
-  padding: 90px max(36px, calc((100vw - 1208px) / 2));
-}
-
-.section-header {
+.hqe-message {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 35px;
-  margin-bottom: 35px;
+  margin-bottom: 18px;
 }
 
-.section-eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.14em;
+.hqe-message--user {
+  justify-content: flex-end;
+}
+
+.hqe-message-bubble {
+  max-width: 90%;
+  min-width: 0;
+
+  padding: 15px 17px;
+
+  border: 1px solid #e8e5dc;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  overflow-wrap: anywhere;
+}
+
+.hqe-message--user .hqe-message-bubble {
+  max-width: 80%;
+
+  border-color: #efe49e;
+  border-bottom-right-radius: 5px;
+
+  background: var(--yellow);
+}
+
+.hqe-message-label {
+  margin-bottom: 6px;
+
+  color: #777064;
+
+  font-size: 11px;
   font-weight: 800;
-  color: #9a8e59;
-  margin: 0 0 15px;
 }
 
-.section-header h2 {
-  font-size: 34px;
-  line-height: 1.2;
-  letter-spacing: -0.05em;
+.hqe-message-bubble > p {
   margin: 0;
-  max-width: 500px;
-}
 
-.section-header > p {
-  color: var(--muted);
   font-size: 13px;
   line-height: 1.8;
-  max-width: 330px;
+  white-space: pre-wrap;
 }
 
-.topics-grid {
+.hqe-status {
+  margin-left: 8px;
+
+  color: #906d15;
+  font-weight: 600;
+}
+
+.hqe-error-text {
+  color: #a92f2f;
+}
+
+/* ==========================================================
+   7. AI Chat input
+   ========================================================== */
+
+.hqe-chat-compose {
+  border-top: 1px solid var(--line);
+  padding: 16px 22px 12px;
+}
+
+.hqe-chat-compose textarea {
+  width: 100%;
+  min-height: 60px;
+  max-height: 180px;
+
+  resize: vertical;
+
+  border: 0;
+  padding: 8px 3px;
+
+  background: transparent;
+  color: var(--ink);
+
+  font-size: 14px;
+  outline: none;
+}
+
+.hqe-compose-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.hqe-compose-bottom > span {
+  color: #8c877a;
+  font-size: 11px;
+}
+
+.hqe-disclaimer {
+  margin: 0;
+  padding: 0 22px 16px;
+
+  color: #888276;
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* ==========================================================
+   8. CMS sources
+   ========================================================== */
+
+.hqe-disclosure {
+  margin-top: 14px;
+  padding-top: 10px;
+
+  border-top: 1px solid var(--line);
+
+  color: #726c62;
+
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.hqe-disclosure summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hqe-disclosure p {
+  margin: 6px 0;
+}
+
+/* ==========================================================
+   9. S5 structured reports
+   ========================================================== */
+
+.hqe-report {
+  margin-top: 14px;
+  padding: 16px;
+
+  border: 1px solid #eae5d8;
+  border-radius: 13px;
+
+  background: #faf8ef;
+}
+
+.hqe-report h4 {
+  margin: 0 0 9px;
+  font-size: 17px;
+}
+
+.hqe-report-headline {
+  margin: 0 0 11px;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.hqe-report-meta {
+  color: #817969;
+
+  font-size: 11px !important;
+  line-height: 1.6;
+}
+
+/* Summary statistics */
+
+.hqe-report-stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(120px, 1fr)
+  );
+
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.hqe-stat {
+  min-width: 0;
+  padding: 10px;
+
+  border: 1px solid #ece8df;
+  border-radius: 9px;
+
+  background: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.hqe-stat span {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #7a7469;
+  font-size: 10px;
+}
+
+.hqe-stat strong {
+  display: block;
+  font-size: 13px;
+}
+
+/* Report hospital table */
+
+.hqe-table-scroll {
+  max-width: 100%;
+  max-height: 400px;
+
+  overflow: auto;
+  margin: 15px 0;
+}
+
+.hqe-results-table {
+  width: 100%;
+  min-width: 470px;
+
+  border-collapse: collapse;
+  text-align: left;
+
+  font-size: 12px;
+}
+
+.hqe-results-table th,
+.hqe-results-table td {
+  padding: 11px 9px;
+
+  vertical-align: top;
+  border-bottom: 1px solid #e4e0d4;
+}
+
+.hqe-results-table th {
+  position: sticky;
+  top: 0;
+
+  background: #f2efe4;
+}
+
+.hqe-results-table td small {
+  display: block;
+  margin-top: 4px;
+
+  color: #888888;
+}
+
+/* Report detail sections */
+
+.hqe-profile-excerpt,
+.hqe-report-measures,
+.hqe-caveats {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.hqe-profile-excerpt h5,
+.hqe-report-measures h5 {
+  margin: 0 0 9px;
+  font-size: 14px;
+}
+
+.hqe-profile-excerpt dl {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(135px, 1fr)
+  );
+
+  gap: 8px;
+}
+
+.hqe-profile-excerpt dl div {
+  padding: 9px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.hqe-profile-excerpt dt {
+  color: #7a7469;
+  font-size: 10px;
+}
+
+.hqe-profile-excerpt dd {
+  margin: 4px 0 0;
+
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.hqe-report-measures p,
+.hqe-caveats p {
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   10. Hospital filters
+   ========================================================== */
+
+.hqe-filter-form {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    minmax(0, 1fr)
+  );
+
+  gap: 17px;
+  padding: 24px;
+}
+
+.hqe-filter-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: var(--ink);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hqe-required {
+  color: #a92f2f;
+}
+
+.hqe-filter-form select {
+  width: 100%;
+  min-width: 0;
+
+  padding: 11px 12px;
+
+  border: 1px solid #dedbd3;
+  border-radius: 10px;
+
+  background: #fffefa;
+  color: var(--ink);
+
+  font-size: 13px;
+}
+
+.hqe-filter-form select:disabled {
+  background: #f4f2ec;
+  color: #88847a;
+  cursor: not-allowed;
+}
+
+.hqe-filter-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
   gap: 15px;
 }
 
-.topic-card {
-  background: #f8f7f2;
-  border-radius: 18px;
-  padding: 25px;
-  min-height: 260px;
+.hqe-field-error {
+  color: #a92f2f;
 
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* ==========================================================
+   11. Search feedback
+   ========================================================== */
+
+.hqe-inline-error {
+  margin: 0 24px 18px;
+  padding: 13px;
+
+  border-radius: 10px;
+
+  background: #fff0f0;
+  color: #a92f2f;
+
+  font-size: 12px;
+}
+
+.hqe-search-loading {
+  padding: 0 24px 18px;
+
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hqe-search-note {
+  padding: 11px 12px;
+
+  border-radius: 9px;
+
+  background: #fff7d7;
+  color: #62562e;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   12. Hospital search results
+   ========================================================== */
+
+.hqe-search-results {
+  padding: 20px 24px 27px;
+  border-top: 1px solid var(--line);
+}
+
+.hqe-search-results h3 {
+  margin: 0 0 15px;
+  font-size: 18px;
+}
+
+.hqe-hospital-list {
+  display: grid;
+  gap: 11px;
+}
+
+.hqe-hospital-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+
+  padding: 17px;
+
+  border: 1px solid var(--line);
+  border-radius: 13px;
+
+  background: #faf9f6;
+}
+
+.hqe-hospital-card h4 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.hqe-hospital-card p {
+  margin: 0 0 5px;
+
+  color: #756f66;
+  font-size: 12px;
+}
+
+.hqe-hospital-card small {
+  color: #989185;
+  font-size: 11px;
+}
+
+.hqe-hospital-metrics {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+
+  color: #726c62;
+
+  font-size: 11px;
+  text-align: right;
 }
 
-.topic-card:nth-child(4) {
-  background: #fff5b4;
+.hqe-hospital-metrics strong {
+  color: var(--ink);
 }
 
-.topic-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.topic-number {
-  font-size: 12px;
-  color: #a49f92;
-}
-
-.topic-decoration {
-  color: #bdb6a7;
-  font-size: 22px;
-}
-
-.topic-label {
-  text-transform: uppercase;
-  color: #8c846a;
-  letter-spacing: 0.12em;
-  font-size: 9px;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.topic-card h3 {
-  font-size: 21px;
-  letter-spacing: -0.035em;
-  margin: 0 0 10px;
-}
-
-.topic-description {
-  color: #746f64;
-  font-size: 12px;
-  line-height: 1.8;
-  margin: 0;
-}
-
-/* About CMS data */
+/* ==========================================================
+   13. Data transparency
+   ========================================================== */
 
 .data-section {
   max-width: 1280px;
   margin: 0 auto;
   padding: 75px 36px;
+
   display: flex;
-  gap: 25px;
   align-items: center;
+  gap: 25px;
 }
 
 .data-section-mark {
-  width: 66px;
-  height: 66px;
-  flex-shrink: 0;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
+
+  width: 66px;
+  height: 66px;
+
   border-radius: 17px;
   background: #f0e9c1;
+
   font-size: 32px;
 }
 
@@ -566,118 +853,519 @@
 }
 
 .data-section h2 {
+  margin: 0 0 10px;
+
   font-size: 25px;
   letter-spacing: -0.04em;
-  margin: 0 0 10px;
 }
 
 .data-section p {
-  font-size: 13px;
-  line-height: 1.8;
-  color: #716c61;
   max-width: 710px;
   margin: 0;
+
+  color: #716c61;
+
+  font-size: 13px;
+  line-height: 1.8;
 }
 
 .source-link {
-  white-space: nowrap;
-  background: #222;
-  color: #fff !important;
-  border-radius: 30px;
   padding: 12px 18px;
+
+  border-radius: 30px;
+
+  background: #222222;
+  color: #ffffff !important;
+
   font-size: 12px;
   font-weight: 650;
+  white-space: nowrap;
 }
 
-/* Footer */
+/* ==========================================================
+   14. Footer
+   ========================================================== */
 
 .site-footer {
-  border-top: 1px solid #e7e3d8;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+
   max-width: 1208px;
   margin: 0 auto;
   padding: 26px 0 40px;
-  display: flex;
-  justify-content: space-between;
+
+  border-top: 1px solid #e7e3d8;
+
   color: #969186;
   font-size: 11px;
-  gap: 18px;
 }
 
-/* Responsive */
+/* ==========================================================
+   15. Accessibility utility
+   ========================================================== */
 
-@media (max-width: 1050px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 35px;
-    padding-top: 45px;
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================
+   16. Responsive layouts
+   ========================================================== */
+
+@media (max-width: 800px) {
+  .hqe-filter-form {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
   }
 
-  .hero h1 {
-    max-width: 700px;
+  .hqe-home-hero {
+    padding: 35px 22px 25px;
   }
 
-  .topics-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .hqe-workspace {
+    padding: 0 22px 50px;
+  }
+
+  .hqe-chat-scroll {
+    height: 55vh;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .site-header {
+    padding: 22px;
+
     flex-direction: column;
     align-items: flex-start;
-    padding: 22px;
-  }
-
-  .site-brand {
-    font-size: 17px;
   }
 
   .site-nav {
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 14px;
   }
 
-  .hero {
-    padding: 45px 22px 65px;
-  }
-
-  .hero h1 {
-    font-size: 44px;
-  }
-
-  .ask-card {
-    padding: 22px;
-  }
-
-  .explore-section {
-    padding: 65px 22px;
-  }
-
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .section-header h2 {
-    font-size: 29px;
-  }
-
-  .topics-grid {
+  .hqe-filter-form {
     grid-template-columns: 1fr;
   }
 
-  .topic-card {
-    min-height: 210px;
+  .hqe-mode-switch {
+    width: 100%;
+  }
+
+  .hqe-mode-switch button {
+    flex: 1;
+    padding: 11px;
+  }
+
+  .hqe-home-hero h1 {
+    font-size: 40px;
+  }
+
+  .hqe-panel-heading {
+    padding: 18px;
+  }
+
+  .hqe-chat-scroll {
+    min-height: 300px;
+    padding: 14px;
+  }
+
+  .hqe-chat-compose {
+    padding: 14px;
+  }
+
+  .hqe-message-bubble {
+    max-width: 95%;
+  }
+
+  .hqe-hospital-card {
+    flex-direction: column;
+  }
+
+  .hqe-hospital-metrics {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hqe-compose-bottom > span {
+    max-width: 55%;
   }
 
   .data-section {
-    padding: 60px 22px;
     flex-direction: column;
     align-items: flex-start;
+    padding: 60px 22px;
   }
 
   .site-footer {
-    padding: 25px 22px;
     flex-direction: column;
+    padding: 25px 22px;
+  }
+}
+
+/* ==========================================================
+   Clickable hospital cards
+   ========================================================== */
+
+.hqe-hospital-card--interactive {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.hqe-hospital-card--interactive:hover {
+  border-color: #cdbd6f;
+
+  box-shadow:
+    0 5px 18px rgba(40, 37, 20, 0.08);
+}
+
+.hqe-hospital-card--interactive:focus-visible {
+  outline: 3px solid #d0b936;
+  outline-offset: 2px;
+}
+
+/* Hospital text */
+
+.hqe-hospital-card-primary {
+  display: block;
+  min-width: 0;
+}
+
+.hqe-hospital-card-name,
+.hqe-hospital-card-location,
+.hqe-hospital-card-id {
+  display: block;
+}
+
+.hqe-hospital-card-name {
+  margin-bottom: 7px;
+
+  color: #202020;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.hqe-hospital-card-location {
+  margin-bottom: 7px;
+
+  color: #756f66;
+  font-size: 12px;
+}
+
+.hqe-hospital-card-id {
+  color: #989185;
+  font-size: 11px;
+}
+
+/* Profile link appearance */
+
+.hqe-profile-cta {
+  margin-top: 6px;
+
+  color: #4c4126;
+  font-weight: 750;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================
+   17. City lookup status and retry
+   ========================================================== */
+
+.hqe-city-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.hqe-city-status {
+  color: #77746d;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.hqe-city-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.hqe-city-retry {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #55451e;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.hqe-city-retry:focus-visible {
+  outline: 3px solid #d0b936;
+  outline-offset: 3px;
+}
+
+/* ==========================================================
+   ADVANCED FILTERS
+   Collapsible options matching the primary dropdowns
+   ========================================================== */
+
+.hqe-advanced-filters {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin-top: 4px;
+  border: 1px solid #e9e6dd;
+  border-radius: 13px;
+  background: #faf9f5;
+}
+
+.hqe-advanced-filters > summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 17px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.hqe-advanced-filters > summary::-webkit-details-marker {
+  display: none;
+}
+
+.hqe-advanced-filters-title {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.hqe-advanced-filters-status {
+  margin-left: auto;
+  color: #77746d;
+  font-size: 12px;
+}
+
+.hqe-advanced-filters-chevron {
+  color: #60594a;
+  font-size: 15px;
+  transition: transform 160ms ease;
+}
+
+.hqe-advanced-filters[open] .hqe-advanced-filters-chevron {
+  transform: rotate(180deg);
+}
+
+.hqe-advanced-filters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+  padding: 0 17px 16px;
+}
+
+.hqe-advanced-filters-note {
+  margin: 0 17px 17px;
+  padding: 11px 12px;
+  border-radius: 9px;
+  background: #fff7d7;
+  color: #62562e;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.hqe-advanced-filters > summary:focus-visible {
+  outline: 3px solid #d0b936;
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .hqe-advanced-filters-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .hqe-advanced-filters-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   Final AI report presentation polish (no backend changes)
+   ========================================================== */
+
+.hqe-report h5.hqe-report-section-heading,
+.hqe-report-measures > h5,
+.hqe-profile-excerpt > h5 {
+  margin: 20px 0 10px;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.hqe-report-measure-intro {
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fffdf7;
+  border: 1px solid #ede8d8;
+  font-size: 12px;
+}
+
+.hqe-report-measure-intro p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hqe-report-highlights {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.hqe-report-highlights > p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 5px 0 10px;
+}
+
+.hqe-report-highlights-grid,
+.hqe-report-measures-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.hqe-report-highlights-grid > div,
+.hqe-report-measure-card {
+  min-width: 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eae5da;
+  background: #fff;
+}
+
+.hqe-report-highlights-grid small,
+.hqe-report-measure-card > span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.hqe-report-highlights-grid strong,
+.hqe-report-measure-card > strong {
+  display: block;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.hqe-report-highlights-grid span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.hqe-report-measure-card dl {
+  margin: 11px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.hqe-report-measure-card dl > div {
+  padding: 8px;
+  border-radius: 7px;
+  background: #f7f6f2;
+}
+
+.hqe-report-measure-card dt {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.hqe-report-measure-card dd {
+  margin: 4px 0 0;
+  font-size: 11px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.hqe-report-measure-details {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: #777168;
+  line-height: 1.6;
+}
+
+.hqe-report-measure-details summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hqe-report-measure-details ul {
+  padding-left: 18px;
+}
+
+.hqe-report-measure-details p {
+  margin: 7px 0;
+}
+
+.hqe-report-empty {
+  padding: 16px;
+  border-radius: 9px;
+  background: #fff;
+  color: #6f6960;
+  font-size: 12px;
+}
+
+.hqe-report-hospital-name {
+  display: block;
+  margin: 0 0 8px;
+}
+
+.hqe-report-dates {
+  margin: 15px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+  .hqe-report {
+    padding: 12px;
+  }
+
+  .hqe-report-highlights-grid,
+  .hqe-report-measures-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hqe-report-measure-card dl {
+    grid-template-columns: 1fr;
   }
 }

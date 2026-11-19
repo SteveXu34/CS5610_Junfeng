@@ -1,7 +1,49 @@
-# Class: CS5610
-# Assignment: HW4
-# Name: Junfeng Xu
-# Time: Oct-07-2026
+# CS5610 — HW04 & HW05
+
+**Student:** Junfeng Xu  
+**Course:** CS5610
+
+## HW05 — React + Vite Frontend
+
+HW05 adds a React frontend under [`react-client/`](react-client/) while retaining the original HTML/JavaScript frontend and the FastAPI backend from HW04.
+
+**Implemented:**
+- Case Studies list fetched from `/case-studies`, with loading, empty and error states; case-study detail views and a gated-content UI demo.
+- Team/About page fetched from `/team-members`, with names, roles, images and bios, plus loading, empty and error states.
+- Shared Header, Footer and Acme Corp styling; state-driven navigation without a router.
+
+### Run the React frontend
+
+From the repository root (requires Node.js and npm):
+
+```bash
+cd react-client
+npm ci
+npm run dev
+```
+
+Visit **http://localhost:5173/**. The client connects to the **deployed** FastAPI backend at https://cs-5610-junfeng-hw4-server.vercel.app, whose database configuration is set on Vercel. **No local `DATABASE_URL` is required to run this React frontend.**
+
+To create and preview a production build:
+
+```bash
+npm run build
+npm run preview
+```
+
+The preview normally runs at **http://localhost:4173/**. Both development and preview origins are in the FastAPI CORS allowlist. Requests for `/case-studies` and `/team-members` returned HTTP 200 during browser tests; the production build succeeded.
+
+For component structure, testing, code reuse, limitations and AI usage, see **[`react-client/README.md`](react-client/README.md)**.
+
+### HW05 architecture
+
+```text
+React + Vite → fetch() → FastAPI on Vercel → psycopg2 → Supabase PostgreSQL
+```
+
+---
+
+## Earlier HW04 documentation
 
 # FastAPI Backend Integration
 
@@ -74,7 +116,9 @@ The database password and connection string are not hard-coded in the source cod
 The frontend and backend are deployed on different origins, so FastAPI uses `CORSMiddleware`.
 
 The backend allows requests from:
-- Local frontend: `http://localhost:5500`
+- Original local frontend: `http://localhost:5500`
+- Vite development: `http://localhost:5173`
+- Vite preview: `http://localhost:4173`
 - Deployed frontend: `https://cs-5610-junfeng-hw2.vercel.app`
 
 This allows both local development and the deployed frontend to access the FastAPI API.

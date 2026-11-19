@@ -1,0 +1,58 @@
+/* ==========================================================
+   S4: HISTORICAL EMERGENCY DEPARTMENT DURATION
+   ========================================================== */
+
+/* ==========================================================
+   1. Search-result metric
+   ========================================================== */
+
+.s4-result-metric {
+  display: block;
+  color: #726c62;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.s4-result-metric strong {
+  color: #202020;
+}
+
+/* ==========================================================
+   2. Hospital Profile metric
+   ========================================================== */
+
+.s4-profile-metric dd small {
+  display: block;
+  margin-top: 5px;
+  color: #77746d;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ==========================================================
+   3. CMS sources and limitations
+   ========================================================== */
+
+.s4-sources {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e9e6dd;
+  color: #726c62;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.s4-sources summary {
+  color: #4f493d;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.s4-sources p {
+  margin: 7px 0;
+}
+
+.s4-sources summary:focus-visible {
+  outline: 3px solid #d0b936;
+  outline-offset: 3px;
+}
